@@ -107,5 +107,8 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 
+/* 外部プラグインのロード */
+CakePlugin::load(array('TwitterBootstrap'));
+
 /* 独自のconfigファイルのロード */
 Configure::load("myconfig");
