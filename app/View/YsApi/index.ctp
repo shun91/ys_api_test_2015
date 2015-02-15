@@ -30,6 +30,17 @@
 </div>
 
 <div class="container">
+
+<div class="panel panel-primary" id="result_block">
+  <div class="panel-heading panel-primary">
+    <h2 class="panel-title">検索結果（20件）</h2>
+  </div>
+  <div class="list-group">
+  	<div id="results">
+
+  	</div>
+  </div>
+</div>
+
   <!-- 結果表示部 -->
-  <div id="results"></div>
 </div>

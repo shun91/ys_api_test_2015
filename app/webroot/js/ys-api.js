@@ -6,13 +6,25 @@
 function createResultsHtml(res) {
 	var results = res.ResultSet[0].Result;
 
-	$("#results").html("<h2>検索結果</h2>"); // 結果表示領域の初期化
+    $("#result_block").hide('slow/400/fast');
+
+	$("#results").html(""); // 結果表示領域の初期化
 
 	// 結果表示HTMLの生成
 	for (var i = 0; i < res.ResultSet.totalResultsReturned; i++) {
-		$("#results").append('<li><a href="'+ results[i].Url +'" target="_blank">'+results[i].Name+'</a></li>');
+		$("#results").append(
+            '<a href="'+ results[i].Url +'" class="list-group-item" target="_blank">'
+            +'<div class="media">'
+            +'<span class="pull-left">'
+            +'<img class="media-object" src="'+ results[i].Image.Medium +'" alt="'+results[i].Name+'">'
+            +'</span>'
+            +'<div class="media-body">'
+            +'<h4 class="list-group-item-heading">'+results[i].Name+'</h4>'
+            //+'<p class="list-group-item-text text-muted">text</p>'
+            +'</div>');
 	}
-	$("#results").wrapInner("<ol>");
+
+    $("#result_block").show('slow/400/fast');
 }
 
 /**
@@ -39,6 +51,7 @@ function ajaxItemSearch(query) {
 }
 
 $(document).ready(function() {
+    $("#result_block").hide();
 	$("#search_form .submit").click(function(event) {
 		ajaxItemSearch($(':text[name="data[query]"]').val());
 	});
